@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Login() {
   return (
@@ -13,7 +14,7 @@ export default function Login() {
         <input type="password" placeholder="Senha"></input>
         <button>Entrar</button>
       </LoginForm>
-      <p>Primeira vez? Cadastre-se!</p>
+      <Link to="/registro" style={{textDecoration: 'none'}}> <p>Primeira vez? Cadastre-se!</p></Link>
     </LoginContainer>
   );
 }
@@ -91,6 +92,8 @@ const LoginForm = styled.form`
     border: 1px solid rgba(255, 255, 255, 0.3);
     margin-bottom: 20px;
   }
+
+
 `;
 
 

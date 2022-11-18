@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Register() {
   return (
@@ -15,7 +16,7 @@ export default function Register() {
       <input type="password" placeholder="Confirme a senha"></input>
       <button>Cadastrar</button>
     </RegisterForm>
-    <p>Já tem uma conta? Entre agora!</p>
+    <Link to="/" style={{textDecoration: 'none'}}> <p>Já tem uma conta? Entre agora!</p></Link>
   </RegisterContainer>
   )
 }
