@@ -1,18 +1,16 @@
 import React from 'react'
 import GlobalStyle from './GlobalStyle'
-import Register from "./pages/Register"
+import Login from './pages/Login'
+import Register from './pages/Register'
+
 
 function App() {
-
-
-
-
 
   return (
     <>
     <GlobalStyle />
-    <Login />
-    <Register />
+   {/* <Login/> */}
+   <Register/>
     </>
   )
 }

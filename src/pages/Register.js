@@ -1,26 +1,28 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components';
 
-export default function Login() {
+export default function Register() {
   return (
-    <LoginContainer>
-      <div>
-        <ion-icon name="wallet-outline"></ion-icon>
-        <h1>My Wallet</h1>
-      </div>
-      <LoginForm>
-        <input type="email" placeholder="E-mail"></input>
-        <input type="password" placeholder="Senha"></input>
-        <button>Entrar</button>
-      </LoginForm>
-      <p>Primeira vez? Cadastre-se!</p>
-    </LoginContainer>
-  );
+    <RegisterContainer>
+    <div>
+      <ion-icon name="wallet-outline"></ion-icon>
+      <h1>My Wallet</h1>
+    </div>
+    <RegisterForm>
+        <input type="text" placeholder='Nome'></input>
+      <input type="email" placeholder="E-mail"></input>
+      <input type="password" placeholder="Senha"></input>
+      <input type="password" placeholder="Confirme a senha"></input>
+      <button>Cadastrar</button>
+    </RegisterForm>
+    <p>Já tem uma conta? Entre agora!</p>
+  </RegisterContainer>
+  )
 }
 
-const LoginContainer = styled.div`
+const RegisterContainer = styled.div`
   text-align: center;
-  margin-top: 200px;
+  margin-top: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,7 +50,7 @@ const LoginContainer = styled.div`
   }
 `;
 
-const LoginForm = styled.form`
+const RegisterForm = styled.form`
   margin-top: 30px;
 
   input {
