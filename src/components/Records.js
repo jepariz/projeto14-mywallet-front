@@ -11,7 +11,7 @@ export default function Records() {
 }
 
 const WalletRecords = styled.div`
-  margin-top: 20px;
+  margin-top: 100px;
   width: 326px;
   height: 446px;
   background-color: #fff;
