@@ -1,19 +1,20 @@
 import styled from "styled-components";
 import Records from "../components/Records";
 import RecordOptions from "../components/RecordOptions";
-import { useState, useContext } from "react";
+import { useContext, useEffect } from "react";
 import MyContext from "../contexts/MyContext";
+import {Link } from "react-router-dom";
 
 export default function Wallet() {
 
-  const {token, username} = useContext(MyContext)
-
+  const {username} = useContext(MyContext)
 
   return (
     <WalletContainer>
       <WalletHeader>
         <h2>Olá, {username}</h2>
-        <ion-icon name="exit-outline"></ion-icon>
+        <Link to="/" style={{ color: "#fff" }}><ion-icon name="exit-outline"></ion-icon></Link>
+      
       </WalletHeader>
      <Records />
      <RecordOptions />

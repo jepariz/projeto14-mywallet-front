@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useState, useContext } from "react";
 import MyContext from "../contexts/MyContext";
-import dayjs from "dayjs";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 

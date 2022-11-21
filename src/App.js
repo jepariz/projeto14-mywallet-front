@@ -14,6 +14,7 @@ function App() {
   const [token, setToken] = useState("");
   const [username, setUsername] = useState("")
   const [tipo, setTipo] = useState("")
+  const [transacoes, setTransacoes] = useState([])
 
   return (
     <>
@@ -26,7 +27,9 @@ function App() {
             username,
             setUsername,
             tipo,
-            setTipo
+            setTipo,
+            transacoes,
+            setTransacoes
           }}
         >
     <Routes>
