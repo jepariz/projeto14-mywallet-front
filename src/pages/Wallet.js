@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import Records from "../components/Records";
 import RecordOptions from "../components/RecordOptions";
+import { useState, useContext } from "react";
+import MyContext from "../contexts/MyContext";
 
 export default function Wallet() {
+
+  const {token, username} = useContext(MyContext)
+
+
   return (
     <WalletContainer>
       <WalletHeader>
-        <h2>Olá, Fulano</h2>
+        <h2>Olá, {username}</h2>
         <ion-icon name="exit-outline"></ion-icon>
       </WalletHeader>
      <Records />

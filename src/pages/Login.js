@@ -11,7 +11,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(false);
 
-  const {setToken } = useContext(MyContext);
+  const {setToken, setUsername } = useContext(MyContext);
   const navigate = useNavigate();
 
  async function handleLogin(e) {
@@ -29,6 +29,7 @@ export default function Login() {
     promise.then((res) => {
       console.log(res.data);
       setToken(res.data.token)
+      setUsername(res.data.username)
       navigate("/carteira");
     });
 

@@ -12,6 +12,8 @@ import NewEntry from './pages/NewEntry';
 function App() {
 
   const [token, setToken] = useState("");
+  const [username, setUsername] = useState("")
+  const [tipo, setTipo] = useState("")
 
   return (
     <>
@@ -21,6 +23,10 @@ function App() {
           value={{
             token,
             setToken,
+            username,
+            setUsername,
+            tipo,
+            setTipo
           }}
         >
     <Routes>
