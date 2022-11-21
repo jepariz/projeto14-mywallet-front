@@ -34,7 +34,7 @@ export default function Records() {
 
     sum = valores.reduce((accumulator, value) => {
       return accumulator + value;
-    }, 0).toFixed(2);
+    }, 0);
 
     total = Math.sign(sum)
 
