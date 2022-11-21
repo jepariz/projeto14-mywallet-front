@@ -1,47 +1,43 @@
 import styled from "styled-components";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import { useState } from "react";
-import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("")
-  const [registerOk, setRegisterOk] = useState(false);
-  const [register, setRegister] = useState(false);
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const navigate = useNavigate();
 
-  function handleRegister() {
+ function handleRegister() {
 
-    if(password === passwordConfirm){
-      setPassword(passwordConfirm)
-    }else{
-      alert("As senhas não conferem. Por favor, confirme a sua senha!")
-      return
+
+    if (password === passwordConfirm) {
+      setPassword(passwordConfirm);
+    } else {
+      alert("As senhas não conferem. Por favor, confirme a sua senha!");
+      return;
     }
 
-    const promise = axios.post(
-      "",
-      {
-        email: email,
-        name: name,
-        password: passwordConfirm,
-      }
-    );
-    promise.then((res) => {
-      setRegisterOk(true);
+    const promise = axios.post("http://localhost:5000/registro", {
+      email: email,
+      name: name,
+      password: passwordConfirm,
+    });
+ 
+    promise.then(() => {
+     alert("usuário cadastrado")
       navigate("/");
     });
-
+   
     promise.catch((err) => {
-      alert(err.response.data.details);
-      setRegister(false);
+      alert(err.response.data);
+      return
     });
 
-    setRegister(true);
-  }
+    return
+}   
 
 
   return (
@@ -54,45 +50,28 @@ export default function Register() {
         <input
           type="text"
           placeholder="Nome"
-          disabled={register && !registerOk ? true : false}
           onChange={(e) => setName(e.target.value)}
           value={name}
         ></input>
         <input
           type="email"
           placeholder="E-mail"
-          disabled={register && !registerOk ? true : false}
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         ></input>
         <input
           type="password"
           placeholder="Senha"
-          disabled={register && !registerOk ? true : false}
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         ></input>
         <input
           type="password"
           placeholder="Confirme a senha"
-          disabled={register && !registerOk ? true : false}
           onChange={(e) => setPasswordConfirm(e.target.value)}
           value={passwordConfirm}
         ></input>
-        {register && !registerOk ? (
-            <button>
-              <ThreeDots
-                height="60"
-                width="60"
-                radius="9"
-                color="#fff"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClassName=""
-                visible={true}
-              />
-            </button>
-          ) : ( <button onClick={() => handleRegister()}>Cadastrar</button>)}
+          <button onClick={() => handleRegister()}>Cadastrar</button>
       </RegisterForm>
       <Link to="/" style={{ textDecoration: "none" }}>
         {" "}
@@ -103,6 +82,7 @@ export default function Register() {
 }
 
 const RegisterContainer = styled.div`
+width: 100%;
   text-align: center;
   margin-top: 120px;
   display: flex;
@@ -132,8 +112,11 @@ const RegisterContainer = styled.div`
   }
 `;
 
-const RegisterForm = styled.form`
+const RegisterForm = styled.div`
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   input {
     width: 326px;
@@ -142,7 +125,7 @@ const RegisterForm = styled.form`
     border-radius: 5px;
     box-sizing: border-box;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color: #a0a5ba;
     font-size: 20px;
 

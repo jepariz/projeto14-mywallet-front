@@ -14,14 +14,18 @@ export default function Login() {
   const {setToken } = useContext(MyContext);
   const navigate = useNavigate();
 
-  function handleLogin() {
+ async function handleLogin(e) {
+
+  e.preventDefault();
+  
     const promise = axios.post(
-      "",
+      "http://localhost:5000",
       {
         email: email,
         password: password,
       }
     );
+
     promise.then((res) => {
       console.log(res.data);
       setToken(res.data.token)
@@ -29,11 +33,13 @@ export default function Login() {
     });
 
     promise.catch((err) => {
-      alert(err.response.data.message);
+      alert(err.response.data);
       setLogin(false);
+      return
     });
 
     setLogin(true);
+    return
   }
 
   return (
@@ -85,9 +91,7 @@ export default function Login() {
 const LoginContainer = styled.div`
   text-align: center;
   margin-top: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+ 
 
   div {
     display: flex;
@@ -112,8 +116,11 @@ const LoginContainer = styled.div`
   }
 `;
 
-const LoginForm = styled.form`
+const LoginForm = styled.div`
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   input {
     width: 326px;
@@ -122,7 +129,7 @@ const LoginForm = styled.form`
     border-radius: 5px;
     box-sizing: border-box;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color: #a0a5ba;
     font-size: 20px;
 

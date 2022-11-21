@@ -22,15 +22,15 @@ function App() {
             token,
             setToken,
           }}
-        ></MyContext.Provider>
+        >
     <Routes>
       <Route path='/' element={<Login />}/>
       <Route path='/registro' element={ <Register/>}/>
       <Route path='/carteira' element={ <Wallet/>}/>
       <Route path='/movimentacao' element={ <NewEntry/>}/>
     </Routes>
+    </MyContext.Provider>
     </BrowserRouter>
-    
     </>
   )
 }
