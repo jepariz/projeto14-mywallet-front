@@ -8,7 +8,7 @@ export default function Records() {
   let sum;
   let total;
 
-  console.log(transacoes)
+  const lastTransactions = transacoes.slice(-10)
 
   useEffect(() => {
     const promise = axios.get("http://localhost:5000/transacoes", {
@@ -30,7 +30,7 @@ export default function Records() {
 
   function somaTransacoes (){
 
-    const valores = transacoes.map((t) => Number(t.valor))
+    const valores = lastTransactions.map((t) => Number(t.valor))
 
     sum = valores.reduce((accumulator, value) => {
       return accumulator + value;
@@ -48,7 +48,7 @@ export default function Records() {
     <>
     {transacoes.length > 0 ?  
     <WalletRecords>
-      {transacoes.map((t, index) => (
+      {lastTransactions.map((t, index) => (
       <TransactionsContainer positive={Math.sign(t.valor) === 1}>
         <DataDescription>
           <p>{t.data}</p>
